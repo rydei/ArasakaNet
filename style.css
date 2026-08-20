@@ -1,0 +1,71 @@
+body{
+    font-family:"Ubuntu Mono";
+    background-image: url("bg.png");
+    background-size: cover;
+    height: 100vh;
+    overflow:hidden;
+}
+
+#topbar{
+    font-family:"Ubuntu Mono";
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:white;
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    padding-right:10px;
+    padding-left:10px;
+    padding-bottom:20px;
+    background-color: rgba(31, 30, 30, 0.386);
+    backdrop-filter: blur(10px);
+}
+#logo{
+    border-radius:10px;
+    width:50px;
+}
+#logo-space{
+    padding-left:10px;
+    height:25px;
+}
+#time-space{
+    padding-right:10px;
+}
+#time{
+}
+
+#sidebar{
+    margin-bottom:68px;
+    position:absolute;
+    left:0;
+    bottom:0;
+    font-family:"Ubuntu Mono";
+    display:flex;
+    flex-direction:column;
+    background-color: rgba(31, 30, 30, 0.386);
+    backdrop-filter: blur(10px);
+    width:700px;
+    height:500px;
+
+}
+
+#sidebar-icons{
+}
+
+
+#outline{
+    color:rgb(255, 255, 255);
+    border-style:solid;
+    border-color: rgb(140, 90, 150);
+    border-width:2px;
+    border-radius:10px;
+    width:80px;
+    padding:10px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background-color:rgb(0, 0, 0);
+}
