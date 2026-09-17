@@ -9,19 +9,31 @@
 
 </head>
 <body>
-    <div id="sidebar">
-        <div class="sidebar-icons"></div>
+
+    </div>
+    <div class="window" id="outlinemain" style="display: none;" >
+        <div class="windowheader" id="outlineheader"><p style="margin-right:auto">S.Y.S !NFO</p><p class="openbutton" id="outlineopen" >-</p><p id="outlineclose">x</p></div>
+        <div><img class="insidewindow" id="outline" src="Welcome Screen.png" draggable="false"></div>
+    </div>
+
+    <div class="window" id="nasa" >
+        <div class="windowheader" id="nasaheader"><p style="margin-right:auto">Nasa Control Panel</p><p class="openbutton" id="nasaopen" >-</p><p id="nasaclose">x</p></div>
+        <div></div>
+    </div>
+
+        <div id="sidebar">
+        <div class="sidebar-icons">
+                <div id="desktopApps">
+                    <img class="selected" id="nasaapp" src="nasa.png">
+                </div>
+        </div>
     </div>
 
     <div id="topbar">
         <div id="logo-space"><img src="favicon.png" id="logo"></div>
         <div id="time-space"><p id="time">6/21/2023 3:41 PM</p></div>
-        
-    </div>
-    <div class="window" id="outlinemain">
-        <div class="windowheader" id="outlineheader"><p class="openbutton" id="outlineopen" >-</p><p id="outlineclose">x</p></div>
-        <div><img class="insidewindow" id="outline" src="Welcome Screen.png" draggable="false"></div>
-    </div>
+
+
     <script src="script.js"></script>
 </body>
 </html>

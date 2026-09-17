@@ -7,8 +7,7 @@ body{
 }
 
 .openbutton{
-    margin-right:4px; 
-    font-size: 25px;
+line-height: 1; font-size: 16px; margin-right: 10px;
 }
 
 #topbar{
@@ -24,7 +23,7 @@ body{
     padding-right:10px;
     padding-left:10px;
     padding-bottom:20px;
-    background-color: rgba(31, 30, 30, 0.386);
+    background-color: rgba(0, 0, 0, 0.386);
     backdrop-filter: blur(10px);
 }
 #logo{
@@ -32,10 +31,11 @@ body{
     width:50px;
 }
 #logo-space{
-    padding-left:10px;
-    height:25px;
+    padding-left:20px;
+    height:50px;
 }
 #time-space{
+    margin-bottom:-10px;
     padding-right:10px;
 }
 
@@ -47,11 +47,22 @@ body{
     font-family:"Ubuntu Mono";
     display:flex;
     flex-direction:column;
-    background-color: rgba(31, 30, 30, 0.386);
+    background-color: rgba(118, 117, 117, 0);
     backdrop-filter: blur(10px);
-    width:700px;
-    height:500px;
+    width:40%;
+    height:60%;
+    border-radius:16px;
+    border-top:solid ;
+    border-right:solid ;
+    border-color: rgb(140, 90, 150);
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 0px
+}
 
+#nasaapp{
+    width:20%;
+    margin-top: -30px;
+    padding:16px;
 }
 
 .window{
@@ -74,7 +85,9 @@ body{
     align-items: center; 
     cursor: pointer; 
     justify-content: flex-end; 
-    margin: -20px;
+    box-sizing: border-box; /* Ensures width: 100% includes padding */
+    padding: 8px 14px;
+    margin: 0px;
     color:rgb(140, 90, 150);
 }
 
@@ -83,3 +96,6 @@ body{
     width:100%;
 }
 
+.selected{
+    filter: drop-shadow(0 0 8px rgb(140, 90, 150));
+}
