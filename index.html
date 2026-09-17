@@ -9,22 +9,73 @@
 
 </head>
 <body>
-
-    </div>
-    <div class="window" id="outlinemain" style="display: none;" >
+    <div class="window" id="outlinemain">
         <div class="windowheader" id="outlineheader"><p style="margin-right:auto">S.Y.S !NFO</p><p class="openbutton" id="outlineopen" >-</p><p id="outlineclose">x</p></div>
         <div><img class="insidewindow" id="outline" src="Welcome Screen.png" draggable="false"></div>
     </div>
 
-    <div class="window" id="nasa" >
+    <div class="window" id="nasa" style="display:none" >
         <div class="windowheader" id="nasaheader"><p style="margin-right:auto">Nasa Control Panel</p><p class="openbutton" id="nasaopen" >-</p><p id="nasaclose">x</p></div>
-        <div></div>
+            <div class="gallery-container">
+                <a href="https://www.nasa.gov/" target="_blank">
+                    <img src="nasa2.png" alt="Nasa" class="gallery-card" />
+                </a>
+                <a href="https://api.nasa.gov/" target="_blank">
+                    <img src="API.png" alt="API" class="gallery-card3" />
+                </a>
+                <a href="https://stardance.hackclub.com/home" target="_blank">
+                    <img src="stardance.png" alt="Stardance"  class="gallery-card"/>
+                </a>
+            </div>
+            <div class="gallery-container2">
+                <a href="https://www.spaceappschallenge.org/" target="_blank">
+                    <img src="spaceapp.png" alt="SpaceApps" class="gallery-card2" />
+                </a>
+        </div>
     </div>
 
+        <div class="window" id="timer" style="display:none" >
+        <div class="windowheader" id="timerheader"><p style="margin-right:auto">C0untdown</p><p class="openbutton" id="timeropen" >-</p><p id="timerclose">x</p></div>
+            <div class="timercontainer">
+                <div class="inputcontainer">
+                    <input type="number" id="minutes" min="1" max="999" value="5" placeholder="Min">
+                    <button id="setTimeB">Set Time</button>
+                </div>
+
+                <div class="timedisplay" id="display">05:00</div>
+        
+                <div class="BControl">
+                    <button id="startB">Start</button>
+                    <button id="pauseB">Pause</button>
+                    <button id="resetB">Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+
+<!--   <div class="window" id="snote" >
+        <div class="windowheader" id="snoteheader"><p style="margin-right:auto">SingleNote</p><p class="openbutton" id="noteopen" >-</p><p id="noteclose">x</p></div>
+        <div class="scontainer">
+            <div class="stoolbar">
+                <div class ="shead">
+                    <input type="text" placeholder="Filename" id="filename">
+                    <select onchange="fileHandle(this.value); this.selectedIndex=0">
+                        <option value="" selected="" hidden="" disabled="">File</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>--> 
+
         <div id="sidebar">
-        <div class="sidebar-icons">
-                <div id="desktopApps">
-                    <img class="selected" id="nasaapp" src="nasa.png">
+        <div class="sidebar-icons" id="sidebar-screen">
+                <div class="desktopApps">
+                    <img id="nasaapp" src="nasa.png">
+                </div>
+                <div class="desktopApps">
+                    <img id="timerapp" src="timer.png">
                 </div>
         </div>
     </div>
