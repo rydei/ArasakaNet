@@ -55,12 +55,18 @@ var outlineScreen = document.querySelector("#outlinemain")
 var outlineClose = document.querySelector("#outlineclose")
 var outlineOpen = document.querySelector("#outlineopen")
 
-function closeWindow(element) {
-  element.style.display = "none"
+function closeWindow(element, iconId) {
+  element.style.display = "none";
+  if (iconId) {
+    var icon = document.getElementById(iconId);
+    if (icon) {
+      icon.classList.remove("selected");
+    }
+  }
 }
 
 function openWindow(element) {
-  element.style.display = "flex";
+  element.style.display = "none";
   biggestIndex++; 
   element.style.zIndex = biggestIndex;
   topbar.style.zIndex = biggestIndex + 1;
@@ -81,7 +87,7 @@ var nasaClose = document.querySelector("#nasaclose");
 var nasaOpen = document.querySelector("#nasaopen");
 
 nasaClose.addEventListener("click", function() {
-  closeWindow(nasaScreen);
+  closeWindow(nasaScreen,"nasaapp");
 });
 
 nasaOpen.addEventListener("click", function() {
@@ -108,7 +114,7 @@ var timerClose = document.querySelector("#timerclose");
 var timerOpen = document.querySelector("#timeropen");
 
 timerClose.addEventListener("click", function() {
-  closeWindow(timerScreen);
+  closeWindow(timerScreen,"timerapp");
 });
 
 timerOpen.addEventListener("click", function() {
