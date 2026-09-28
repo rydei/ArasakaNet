@@ -4,6 +4,25 @@ body{
     background-size: cover;
     height: 100vh;
     overflow:hidden;
+    box-sizing: border-box;
+}
+.Owindow{
+    border: solid; 
+    display: flex; 
+    flex-direction: column; 
+    border-radius: 16px; 
+    position: absolute; 
+    top: calc(50% - 180px); 
+    left: calc(50% - 360px); 
+    backdrop-filter: blur(4px); 
+    background-color: rgba(0, 0, 0, 0.125); 
+    border-color:rgb(140, 90, 150);
+    width:60%;
+}
+#dinoboard{
+    background-color: rgb(0, 0, 0);
+    border-bottom: 1px solid black;
+    border-radius: 20px;
 }
 
 .gallery-card:hover {
@@ -44,7 +63,8 @@ filter: drop-shadow(3px 3px 5px rgba(140, 90, 150, 0.4));
 
 .gallery-container{
     width:90%;
-    margin-left:30px;
+    margin-left:20px;
+    margin-right:20px;
     display:flex;
     flex-direction:row;
     justify-content: space-between;
@@ -86,6 +106,8 @@ line-height: 1; font-size: 16px; margin-right: 10px;
     bottom:0;
     left:0;
     right:0;
+    border-top:solid;
+    border-color: rgb(140, 90, 150);
     padding-right:10px;
     padding-left:10px;
     padding-bottom:20px;
@@ -94,11 +116,11 @@ line-height: 1; font-size: 16px; margin-right: 10px;
 }
 #logo{
     border-radius:10px;
-    width:50px;
+    width:45px;
 }
 #logo-space{
     padding-left:20px;
-    height:50px;
+    height:30px;
 }
 #time-space{
     margin-bottom:-10px;
@@ -107,33 +129,31 @@ line-height: 1; font-size: 16px; margin-right: 10px;
 
 #sidebar{
     z-index:99999999;
-    margin-bottom:68px;
+    margin-bottom:71px;
     position:absolute;
     left:0;
     bottom:0;
     font-family:"Ubuntu Mono";
     display:none;
-    flex-direction:column;
+    flex-direction:row;
+    flex-wrap: wrap;
     background-color: rgba(118, 117, 117, 0);
     backdrop-filter: blur(10px);
     width:40%;
     height:60%;
     border-radius:16px;
-    border-top:solid ;
-    border-right:solid ;
+    border:solid;
     border-color: rgb(140, 90, 150);
+    border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
-    border-top-left-radius: 0px
+    border-top-left-radius: 0px;
+    box-sizing:border-box;
+    justify-content:flex-start;
 }
 
-#nasaapp{
-    width:30%;
-    margin-top: 30px;
-    padding:16px;
-}
-
-#timerapp{
-    width:30%;
+#nasaapp, #starnicapp,#timerapp{
+    box-sizing:border-box;
+    width:25%;
     margin-top: 30px;
     padding:16px;
 }
@@ -149,7 +169,7 @@ line-height: 1; font-size: 16px; margin-right: 10px;
     backdrop-filter: blur(4px); 
     background-color: rgba(0, 0, 0, 0.125); 
     border-color:rgb(140, 90, 150);
-    width:60%;
+
 }
 
 .windowheader{
