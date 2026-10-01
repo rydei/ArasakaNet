@@ -1,3 +1,16 @@
+function hideLoadingScreen() {
+  var loader =document.getElementById("loadingScreen");
+  loader.classList.add("fadeout");
+
+  setTimeout(function() {
+    loader.remove();
+  },800)
+}
+
+function loadingTimer() {
+  setTimeout(hideLoadingScreen, 5000)
+}
+
 
 //Time Updater
 function TimeUpdater(){
@@ -6,7 +19,7 @@ var timeHolder = document.querySelector("#time");
 timeHolder.innerHTML = timeRN;}
 
 setInterval(TimeUpdater,1000);
-/*dragElement(document.getElementById("snote"))*/
+dragElement(document.getElementById("quickNote"))
 
 function dragElement(element) {
 
@@ -94,9 +107,9 @@ nasaOpen.addEventListener("click", function() {
   openWindow(nasaScreen);
 });
 
-/*3.SNote
+//3.Quick Note
 
-var noteScreen = document.querySelector("#note");
+var noteScreen = document.querySelector("#quickNote");
 var noteClose = document.querySelector("#noteclose");
 var noteOpen = document.querySelector("#noteopen");
 
@@ -105,7 +118,7 @@ noteClose.addEventListener("click", function() {
 });
 noteOpen.addEventListener("click", function() {
   openWindow(noteScreen);
-});*/
+});
 
 //4. timer
 
@@ -186,7 +199,7 @@ initializeWindow("nasa")
 initializeWindow("outlinemain")
 initializeWindow("timer")
 initializeWindow("starnic")
-/*initializeWindow("snote")*/
+initializeWindow("quickNote")
 
 let defaultTime = 300;
 let timeLeft = defaultTime; 
@@ -277,6 +290,7 @@ function toggleApp(IconId,windowId) {
 document.getElementById("starnicapp").onclick = function() {toggleApp("starnicapp","starnic")};
 document.getElementById("nasaapp").onclick = function() { toggleApp("nasaapp","nasa")};
 document.getElementById("timerapp").onclick = function(){ toggleApp("timerapp","timer")};
+document.getElementById("noteapp").onclick = function(){ toggleApp("noteapp","quickNote")};
 
 //STARNIC
 
@@ -318,6 +332,7 @@ let gameOver = false;
 let score = 0;
 
 window.onload = function() {
+    loadingTimer();
     board = document.getElementById("dinoboard");
     board.height = boardHeight;
     board.width = boardWidth;
@@ -444,3 +459,109 @@ function reset() {
 
     requestAnimationFrame(update);
 }
+
+//Quick Note
+let notes =[]
+let editingNoteId = null
+function loadNotes(){
+    const savedNotes = localStorage.getItem('quickNotes')
+    return savedNotes ? JSON.parse(savedNotes) : []
+}
+
+function openNoteDialog(noteId = null) {
+    const dialog = document.getElementById('noteDialog');
+    const titleInput = document.getElementById('noteTitle');
+    const contentInput = document.getElementById('noteContent');
+
+    if(noteId) {
+        const noteToEdit =notes.find(note => note.id === noteId)
+        editingNoteId = noteId
+        document.getElementById('dialogTitle').textContent = 'Edit Note'
+        titleInput.value = noteToEdit.title
+        contentInput.value = noteToEdit.content
+    } else {
+        editingNoteId = null
+        document.getElementById('dialogTitle').textContent ='Add new note'
+        titleInput.value = ""
+        contentInput.value = ""
+    }
+
+dialog.showModal()
+titleInput.focus()
+}
+
+
+function closeNoteDialog() {
+    document.getElementById('noteDialog').close()
+}
+
+function deleteNote(noteId) {
+    notes = notes.filter(note => note.id != noteId)
+    saveNotes()
+    renderNotes()
+}
+
+function saveNote(event){
+    event.preventDefault()
+    const title = document.getElementById('noteTitle').value.trim();
+    const content = document.getElementById('noteContent').value.trim();
+    if(editingNoteId) {
+        const noteIndex = notes.findIndex(note => note.id === editingNoteId)
+        notes[noteIndex] ={
+            ...notes[noteIndex],
+            title:title,
+            content:content
+        }
+    } else {
+        notes.unshift({
+        id: generateId(),
+        title:title,
+        content: content
+    })
+
+    }
+    editingNoteId = null;
+    document.getElementById('noteForm').reset();
+    closeNoteDialog();
+    saveNotes()
+    renderNotes()
+}
+
+function saveNotes(){
+    localStorage.setItem('quickNotes',JSON.stringify(notes))
+}
+
+function generateId(){
+    return Date.now().toString()
+}
+
+function renderNotes(){
+    const notesContainer = document.getElementById('notesContainer');
+
+    if(notes.length === 0) {
+        notesContainer.innerHTML= `<div class="empty-state"> <h2> No notes yet...</h2></div>`
+        return
+    }
+    notesContainer.innerHTML = notes.map(note=> `<div class = "notes-card">
+    <h3 class = 'note-title'>${note.title}</h3>
+    <p class = "note-content">${note.content}</p>
+        <div class="notes-actions">
+        <button class="edit-btn" onclick="openNoteDialog('${note.id}')" title="Edit Note">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+            </svg>
+            </button>
+        <button class="delete-btn" onclick="deleteNote('${note.id}')" title="Delete Note">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.3 5.71c-.39-.39-1.02-.39-1.41 0L12 10.59 7.11 5.7c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L10.59 12 5.7 16.89c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 13.41l4.89 4.88c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4z"/>
+            </button>
+            </div>
+    </div>`).join("")
+}   
+
+document.addEventListener('DOMContentLoaded',function(){
+notes = loadNotes()
+renderNotes()
+
+document.getElementById('noteForm').addEventListener('submit',saveNote)
+})

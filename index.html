@@ -9,6 +9,9 @@
 
 </head>
 <body>
+    <div id ="loadingScreen">
+        <div class="wrapperL"><p class="Lstatus">it's alive.</p></div>
+    </div>
     <div class="Owindow" id="outlinemain">
         <div class="windowheader" id="outlineheader"><p style="margin-right:auto">S.Y.S !NFO</p><p class="openbutton" id="outlineopen" >-</p><p id="outlineclose">x</p></div>
         <div><img class="insidewindow" id="outline" src="Welcome Screen.png" draggable="false"></div>
@@ -60,19 +63,52 @@
         </div>
     </div>
 
-<!--   <div class="window" id="snote" >
-        <div class="windowheader" id="snoteheader"><p style="margin-right:auto">SingleNote</p><p class="openbutton" id="noteopen" >-</p><p id="noteclose">x</p></div>
-        <div class="scontainer">
-            <div class="stoolbar">
-                <div class ="shead">
-                    <input type="text" placeholder="Filename" id="filename">
-                    <select onchange="fileHandle(this.value); this.selectedIndex=0">
-                        <option value="" selected="" hidden="" disabled="">File</option>
-                    </select>
-                </div>
-            </div>
+
+
+
+   <div class="notewindow" id="quickNote" style="display:none">
+        <div class="windowheader" id="quickNoteheader"><p style="margin-right:auto">Quick note.</p><p class="openbutton" id="noteopen" >-</p><p id="noteclose">x</p></div>
+        <header>
+        <h1>Quick note.</h1>
+        <div>
+            <button class ="add-note-btn" onclick="openNoteDialog()">+ Add Note</button>
         </div>
-    </div>--> 
+    </header>
+
+    <main id="notesContainer" class="notes-grid"></main>
+
+    <dialog id="noteDialog">
+        <div class="dialog-content">
+        <div class="dialog-header">
+        <h2 class="dialog-title" id="dialogTitle"> Add new Note</h2>
+        <button class="close-btn" onclick="closeNoteDialog()">x</button>
+        </div>
+
+        <form id="noteForm">
+            <div class="form-group">
+            <label for="noteContent" class="form-label">Title</label>
+            <input type="text" id="noteTitle" class="form-input" placeholder="Write that crazy title..." required>
+            </div>
+
+            <div class="form-group">
+                <label for="noteContent" class="form-label">Content</label>
+                <textarea id="noteContent" class="form-textarea" placeholder="Write your crazy thoughts here..." required></textarea>
+            </div>
+
+            <div class="dialog-actions">
+                <button type="button" class="cancel-btn" onclick="closeNoteDialog()">Cancel</button>
+                <button type="submit" class="save-btn">Save Note</button>
+            </div>
+        </form>
+
+        </div>
+    </dialog>
+        </div>
+    </div>
+
+
+
+
 
         <div id="sidebar">
         <div class="sidebar-icons" id="sidebar-screen">
@@ -85,13 +121,15 @@
                 <div class="desktopApps">
                     <img id="starnicapp" src="starnicapp.png">
                 </div>
+                <div class="desktopApps">
+                    <img id="noteapp" src="QuickNote.png">
+                </div>
         </div>
     </div>
 
     <div id="topbar">
         <div id="logo-space"><img src="favicon.png" id="logo"></div>
         <div id="time-space"><p id="time">6/21/2023 3:41 PM</p></div>
-
 
     <script src="script.js"></script>
 </body>
