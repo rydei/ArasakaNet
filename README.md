@@ -21,8 +21,6 @@ Visit https://arasaka-net-sepia.vercel.app/ to try it out yourself!
 ---
 
 ## Planned Updates
-- dino game
 - loading screen
 - music player
 - a functional SingleNote text editor
-- custom audio effects for window actions
